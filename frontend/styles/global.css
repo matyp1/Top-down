@@ -1,0 +1,81 @@
+:root {
+  --guardian: #4f46e5;
+  --pioneer: #16a34a;
+  --strategist: #f97316;
+  --harmonizer: #ec4899;
+  --plaza-bg: #0f172a;
+  --plaza-text: #e2e8f0;
+}
+
+body {
+  background: var(--plaza-bg);
+  color: var(--plaza-text);
+  font-family: "Trebuchet MS", sans-serif;
+  margin: 0;
+  padding: 2rem;
+}
+
+.plaza-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.faction-card {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 0 20px rgba(15, 23, 42, 0.5);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.guardian-glow {
+  border: 2px solid var(--guardian);
+}
+
+.pioneer-flare {
+  border: 2px solid var(--pioneer);
+}
+
+.strategist-shine {
+  border: 2px solid var(--strategist);
+}
+
+.faction-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.faction-option {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  background: rgba(59, 130, 246, 0.1);
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.faction-option.selected,
+.faction-option:hover {
+  transform: translateY(-2px);
+  border-color: var(--guardian);
+}
+
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard-entry {
+  display: grid;
+  grid-template-columns: 3rem 1fr 4rem 3rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+}
