@@ -14,3 +14,14 @@ Each module embraces faction-flavored naming to keep the narrative spirit alive 
 ## Journey Blueprint
 
 The `docs/faction-flow-journey.md` scroll captures the foundational idea, network rituals, and onboarding safeguards for Faction Flow. Use it as the guiding compass when extending data models, designing faction bots, or crafting daily rituals.
+
+## 4D Live Map Scaffold
+
+To support experimentation with a time-aware terrain map, the repository now includes a Prisma + PostgreSQL data layer and seeding utilities.
+
+1. Copy `.env.example` to `.env` and adjust the `DATABASE_URL` for your Postgres or Supabase instance.
+2. Install dependencies with `npm install`.
+3. Apply the schema with `npm run db:push`.
+4. Populate demo data with `npm run seed`.
+
+The `scripts/push.sh` helper can be used to publish the repository to GitHub once `GITHUB_PAT` (and optionally `GITHUB_USERNAME`) are configured in your shell environment.
