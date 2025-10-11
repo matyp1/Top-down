@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum EventType {
+  point
+  trip
+}
+
+model User {
+  id             String          @id @default(uuid())
+  email          String          @unique
+  createdAt      DateTime        @default(now()) @map("created_at")
+  events         Event[]
+  timelineStates TimelineState[]
+
+  @@map("users")
+}
+
+model Event {
+  id        String    @id @default(uuid())
+  userId    String    @map("user_id")
+  type      EventType
+  lon       Float
+  lat       Float
+  altitude  Float?
+  timestamp DateTime
+  trail     Json
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([timestamp])
+  @@map("events")
+}
+
+model TimelineState {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  currentTime DateTime @map("current_time")
+  speed       Float    @default(1.0)
+  playing     Boolean  @default(true)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("timeline_states")
+}
